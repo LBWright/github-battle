@@ -1,12 +1,32 @@
 const React = require('react');
-const Popular = require('./Popular')
+const ReactRouter = require('react-router-dom');
+const Router = ReactRouter.BrowserRouter;
+const Route = ReactRouter.Route;
+const Switch = ReactRouter.Switch;
+
+//import components
+const Popular = require('./Popular');
+const Nav = require('./Nav');
+const Home = require('./Home');
+const Battle = require('./Battle')
+
 
 class App extends React.Component {
 	render() {
 		return (
-			<div className="container">
-				<Popular />
-			</div>
+			<Router>
+				<div className="container">
+					<Nav />
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/popular" component={Popular} />
+						<Route exact path="/battle" component={Battle} />
+						<Route render={function() {
+							return <h2>Page Not Found</h2>
+						}} />
+					</Switch>		
+				</div>
+			</Router>
 		)
 	}
 }
