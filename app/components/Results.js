@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 
 import PlayerPreview from './PlayerPreview'
+import Loading from './Loading'
 import api from '../utils/api';
 
 
@@ -91,7 +92,7 @@ class Results extends React.Component{
 		let loading = this.state.loading;
 
 		if (loading === true){
-			return <p>Loading...</p>
+			return <Loading text='Downloading'/>
 		}
 		if (error){
 			return (
